@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables, Loops, Functions</title>
+</head>
+<body>
+    <div id="firstStrategy"></div>
+    <div id="secondStrategy"></div>
+    <div id="thirdStrategy"></div>
+
+    <script>
+      // First Strategy
+      let firstStrategy_str = "";
+      for (let factor1 = 1; factor1 <= 12; factor1++) {
+        for (let factor2 = 1; factor2 <= 12; factor2++) {
+          let product = factor1 * factor2;
+          firstStrategy_str += `${factor1} X ${factor2} = ${product}<br>`;
+        }
+        firstStrategy_str += `<br> ---------------------- <br>`;
+      }
+    
+      // Display the times tables using the first strategy in the HTML element with id 'firstStrategy'
+      let refToFirstStrategyDiv = document.querySelector("#firstStrategy");
+      refToFirstStrategyDiv.innerHTML = firstStrategy_str;
+    </script>
+
+<script>
+    // Second Strategy
+    const createTables = (factor1) => {
+      let secondStrategy_str = "";
+      for (let factor2 = 1; factor2 <= 12; factor2++) {
+        let product = factor1 * factor2;
+        secondStrategy_str += `${factor1} X ${factor2} = ${product}<br>`;
+      }
+      secondStrategy_str += `<br> ---------------------- <br>`;
+      return secondStrategy_str;
+    };
+  
+    let refToSecondStrategyDiv = document.querySelector("#secondStrategy");
+    for (let factor1 = 1; factor1 <= 12; factor1++) {
+      refToSecondStrategyDiv.innerHTML += createTables(factor1);
+    }
+  </script>
+  
+    <script>
+        // Third Strategy
+        const createTables = (factor, delimiter) => {
+          let thirdStrategy_str = "";
+          for (let factor2 = 1; factor2 <= delimiter; factor2++) {
+            let product = factor * factor2;
+            thirdStrategy_str += `${factor} X ${factor2} = ${product}<br>`;
+          }
+          thirdStrategy_str += `<br> ---------------------- <br>`;
+          return thirdStrategy_str;
+        };
+      
+        const allTables = (delimiter) => {
+          let refToThirdStrategyDiv = document.querySelector("#thirdStrategy");
+          for (let factor = 1; factor <= 12; factor++) {
+            refToThirdStrategyDiv.innerHTML += createTables(factor, delimiter);
+          }
+        };
+      
+        // Call the allTables function with a delimiter of 10
+        allTables(10);
+      </script>
+
+</body>
+</html>
